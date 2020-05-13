@@ -1,4 +1,4 @@
-#uri-judge-solutions (https://www.urionlinejudge.com.br/).
+## uri-judge-solutions (https://www.urionlinejudge.com.br/).
 
 Repositório com soluções feitas por mim em diversas linguagens para os problemas disponíveis na plataforma "URI Online Judge".
 

@@ -1,4 +1,4 @@
-#neps-academy-solutions (https://neps.academy/).
+## neps-academy-solutions (https://neps.academy/).
 
 Repositório com soluções feitas por mim em diversas linguagens para os problemas disponíveis na plataforma "Neps Academy".
 
