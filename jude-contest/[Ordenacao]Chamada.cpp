@@ -13,7 +13,7 @@ int main(){
     cin >> N;
     string Nomes[N];
     cin.ignore();
-	string aux;
+    string aux;
     int menor_i;
     
 	//Entrada de dados

@@ -12,7 +12,7 @@ int main(){
     int N;
     cin >> N;
     double Valores[N];
-	double aux;
+    double aux;
     int menor_i;
     
 	//Entrada de dados
