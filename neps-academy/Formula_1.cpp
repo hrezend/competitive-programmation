@@ -9,28 +9,27 @@ using namespace std;
 struct Piloto{
 	int Id;
 	int Pontos;
-	int Posicao;
 };
 
 bool order(Piloto a, Piloto b){
-	return(a.Pontos > b.Pontos || a.Pontos == b.Pontos && a.Id > b.Id);
+	return(a.Pontos > b.Pontos || a.Pontos == b.Pontos && a.Id < b.Id);
 }
 
 int main(){
 	desync;
 
-	vector <Piloto> Pil;
-	Piloto Input;
 	int G, P;
 	cin >> G >> P;
 	
 	while(G != 0 && P != 0){
+		vector <Piloto> Pil;
+		Piloto Input;
 		int OrdemChegada[G][P];
 
+		Pil.clear();
 		for(int i = 1; i <= P; i++){
 			Input.Id = i;
 			Input.Pontos = 0;
-			Input.Posicao = 0;
 			Pil.push_back(Input);
 		}
 
@@ -44,49 +43,46 @@ int main(){
 		cin >> S;
 
 		for(int i = 0; i < S; i++){
-			int K, Pontos;
+			int K;
+			int Pontos[P] = {0};
+			int Winners[P] = {0};
 			cin >> K;
-			int Aux = 0;
-			vector <int> Winners;
 
-			for(int x = 0; x < P; x++){
-				for(int z = 0; z < P; z++){
-					if(OrdemChegada[Aux][z] == Pil[x].Id){
-						Pil[x].Posicao = z+1;
-					}
-				}
+			Pil.clear();
+			for(int i = 1; i <= P; i++){
+				Input.Id = i;
+				Input.Pontos = 0;
+				Pil.push_back(Input);
 			}
-
-			sort(Pil.begin(), Pil.end(), order);
-		
+	
 			for(int j = 0; j < K; j++){
-				cin >> Pontos;
-				Pil[j].Pontos += Pontos;
+				cin >> Pontos[j];
 			}
-
-			for(int f = 0; f < P; f++){
-				cout << "f = " << f << " Id = " << Pil[f].Id << " Pontos = " << Pil[f].Pontos << " Posicao = " << Pil[f].Posicao << endl;
+	
+			for(int z = 0; z < P; z++){
+				for(int x = 0; x < G; x++){
+					Pil[z].Pontos += Pontos[(OrdemChegada[x][z]-1)];
+				}
 			}
+		
+			sort(Pil.begin(), Pil.end(), order);
 
-			Winners.push_back(Pil[0].Id);
-			for(int v = 1; v < Pil.size(); v++){
-				if(Pil[v].Pontos >= Pil[0].Pontos){
-					Winners.push_back(Pil[v].Id);					
+			Winners[0] = Pil[0].Id;
+			for(int f = 1; f < P; f++){
+				if(Pil[f].Pontos == Pil[0].Pontos){
+					Winners[f] = Pil[f].Id;
+				}
+			}
+			
+			sort(Winners, Winners+P);
+
+			for(int c = 0; c < P; c++){
+				if(Winners[c] != 0){
+					cout << Winners[c] << " ";
 				}
 			}
 
-			sort(Winners.begin(), Winners.end());
-
-			for(int c = 0; c < Winners.size(); c++){
-				cout << Winners[c] << " ";
-			}
-
-			Aux++;
 			cout << endl;
-
-			for(int h = 0; h < P; h++){
-				Pil[h].Pontos = 0;
-			}
 		}
 
 		cin >> G >> P;
