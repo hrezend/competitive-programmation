@@ -9,18 +9,30 @@ using namespace std;
 int main(){
 	desync;
 	
-	int N, Input;
-	long long Produto = 0;
+	long long int N, Produto = 0, Maior = 0;
 	cin >> N;
-	int V[N] = {0};
+	long long int V[N] = {0};
 
 	for(int i = 0; i < N; i++){
 		cin >> V[i];
 	}
-	
-	sort(V, V+N);
 
-	Produto = V[N-1] * V[N-2] * V[N-3];
-
-	cout << Produto << endl;
+	int i, j, k;
+	for(i = 0; i < N; i++){
+		for(j = i+1; j < N; j++){
+			if(j+1 > N){
+				break;
+			}
+			for(k = j+1; k < N; k++){
+				if(k+1 > N){
+					break;
+				}
+				Produto = V[i] * V[j] * V[k];
+				if(Produto > Maior){
+					Maior = Produto;
+				}
+			}
+		}
+	}
+	cout << Maior << endl;
 }
