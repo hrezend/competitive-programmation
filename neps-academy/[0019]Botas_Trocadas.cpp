@@ -36,16 +36,19 @@ int main(){
 			if(botas[i].first == clone[j].first){
 				if(botas[i].second == 'E' && clone[j].second == 'D'){
 					count++;
-					clone[j].second = '0';
+					clone[j].second = '-';
+					break;
 				}
 				else if(botas[i].second == 'D' && clone[j].second == 'E'){
 					count++;
-					clone[j].second = '0';
+					clone[j].second = '-';
+					break;
 				}
 			}
 		}
 	}
 
 	cout << count << endl;
-	
+
 }
+
