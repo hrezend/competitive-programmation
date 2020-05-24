@@ -9,7 +9,7 @@ using namespace std;
 int main(){
 	desync;
 	
-	long long int N, Produto = 0, Maior = 0;
+	long long int N, Maior = 0;
 	cin >> N;
 	long long int V[N] = {0};
 
@@ -17,22 +17,7 @@ int main(){
 		cin >> V[i];
 	}
 
-	int i, j, k;
-	for(i = 0; i < N; i++){
-		for(j = i+1; j < N; j++){
-			if(j+1 > N){
-				break;
-			}
-			for(k = j+1; k < N; k++){
-				if(k+1 > N){
-					break;
-				}
-				Produto = V[i] * V[j] * V[k];
-				if(Produto > Maior){
-					Maior = Produto;
-				}
-			}
-		}
-	}
-	cout << Maior << endl;
+	long long int Produto = V[N-1]*V[N-2]*V[N-3];
+	long long int Produto2 = V[0]*V[1]*V[N-1];
+	cout << max(Produto, Produto2) << endl;
 }
