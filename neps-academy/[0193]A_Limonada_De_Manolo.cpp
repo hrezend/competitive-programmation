@@ -13,17 +13,16 @@ using namespace std;
 
 int main(){
 	desync;
-	int qtd_a = 0, qtd_b = 0, qtc_c = 0;
-	int qtd_pecas;
-	cin >> qtd_pecas;
-	int v[qtd_pecas];
+	int preco, qtd, total = 0;
+	cin >> qtd >> preco;
 
+	for(int i = 1; i <= qtd; i++){
+		total += preco;
 
+		if(preco != 1){
+			preco--;
+		}
+	}
 
-
-
-
-	cout << "A: " << qtd_a << endl;
-	cout << "B: " << qtd_b << endl;
-	cout << "C: " << qtd_c << endl;
+	cout << total << endl;
 }

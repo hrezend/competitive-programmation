@@ -13,17 +13,18 @@ using namespace std;
 
 int main(){
 	desync;
-	int qtd_a = 0, qtd_b = 0, qtc_c = 0;
-	int qtd_pecas;
-	cin >> qtd_pecas;
-	int v[qtd_pecas];
+	int n;
+	cin >> n;
+	int v[n];
+	v[0] = 0;
+	v[1] = 1;
 
+	for(int i = 2; i < n; i++){
+		v[i] = v[i-1] + v[i-2];
+	}
+	for(int i = 0; i < n; i++){
+		cout << v[i] << " ";
+	}
 
-
-
-
-
-	cout << "A: " << qtd_a << endl;
-	cout << "B: " << qtd_b << endl;
-	cout << "C: " << qtd_c << endl;
+	cout << endl;	
 }

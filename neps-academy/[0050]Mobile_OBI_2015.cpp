@@ -13,17 +13,13 @@ using namespace std;
 
 int main(){
 	desync;
-	int qtd_a = 0, qtd_b = 0, qtc_c = 0;
-	int qtd_pecas;
-	cin >> qtd_pecas;
-	int v[qtd_pecas];
+	int a, b, c, d;
+	cin >> a >> b >> c >> d;
 
-
-
-
-
-
-	cout << "A: " << qtd_a << endl;
-	cout << "B: " << qtd_b << endl;
-	cout << "C: " << qtd_c << endl;
+	if(a == (b+c+d) && d == (b+c) && b == c){
+		imp("S");
+	}
+	else{
+		imp("N");
+	}
 }

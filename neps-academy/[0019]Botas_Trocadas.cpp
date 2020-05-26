@@ -19,6 +19,7 @@ using namespace std;
 
 int main(){
     desync;
+	int res, n;
     map<int, pair<int, int>> mapa;
     pair<int, char> aux;
     vector<pair<int, char>> v;
