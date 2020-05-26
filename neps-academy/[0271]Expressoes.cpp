@@ -4,7 +4,7 @@
 #define desync ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 #define pb push_back
 #define endl '\n'
-#define debug(x) cout << x << endl
+#define debug(x) cout << "debug: " << x << endl
 #define lng(x) x.length()
 #define sz(x) (int)x.size()
 #define all(x) (x.begin(), x.end())
@@ -18,52 +18,47 @@
 using namespace std;
 
 int main(){
+
 	desync;
-	string Sequence;
-	int N;
-	cin >> N;
+	string sequence;
+	int n;
+	cin >> n;
 
-	for(int g = 0; g < N; g++){
-		cin >> Sequence;
-		int Tamanho = lng(Sequence);
-		int Condicao = 0;
-		stack <char> Pilha;	
-		if(Sequence[0] != '}' && Sequence[0] != ')' && Sequence[0] != ']'){
-			Pilha.push(Sequence[0]);
-			for(int i = 1; i < Tamanho; i++){
-				if(Sequence[i] == '(' || Sequence[i] == '[' || Sequence[i] == '{'){
-					Pilha.push(Sequence[i]);
+	for(int g = 0; g < n; g++){
+		cin >> sequence;
+		int tamanho = lng(sequence);
+		stack <char> pil;
+
+		for(int i = 0; i < tamanho; i++){
+			if(sequence[i] == '(' || sequence[i] == '[' || sequence[i] == '{'){
+				pil.push(sequence[i]);
+			}
+			if(!empty(pil)){
+				if(sequence[i] == ')' && top(pil) == '(' || sequence[i] == '}' && top(pil) == '{' || sequence[i] == ']' && top(pil) == '['){
+					pop(pil);
 				}
-				if(!empty(Pilha)){
-					if(Sequence[i] == ')' && top(Pilha) == '('){
-						pop(Pilha);
-					}
-					else if (Sequence[i] == '}' && top(Pilha) == '{'){
-						pop(Pilha);
-					}
-					else if (Sequence[i] == ']' && top(Pilha) == '['){
-						pop(Pilha);
-					}
+				else if(top(pil) == '(' && sequence[i] == '}' || sequence[i] == ']'){
+					break;
 				}
-				else if(empty(Pilha) && Sequence[i] == ')' || empty(Pilha) && Sequence[i] == '}' || empty(Pilha) && Sequence[i] == ']'){
-					Condicao = 1;
+				else if(top(pil) == '{' && sequence[i] == ')' || sequence[i] == ']'){
+					break;
 				}
+				else if(top(pil) == '[' && sequence[i] == ')' || sequence[i] == '}'){
+					break;
+				}
+			}
+			else if(empty(pil) && sequence[i] == ')' ||  sequence[i] == '}' ||  sequence[i] == ']'){
+				pil.push(sequence[i]);				
+				break;
 			}
 		}
-		else{
-			Condicao = 1;
-		}
-
-		if(Condicao == 0){
-			if(empty(Pilha)){
-				cout << "S" << endl;
-			}
-			else{
-				cout << "N" << endl;
-			}
+		
+		if(empty(pil)){
+			cout << "S" << endl;
 		}
 		else{
 			cout << "N" << endl;
 		}
+
 	}
 }

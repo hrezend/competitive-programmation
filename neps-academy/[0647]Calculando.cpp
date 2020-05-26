@@ -18,24 +18,25 @@
 using namespace std;
 
 int main(){
-    desync;
-    map<int, pair<int, int>> mapa;
-    pair<int, char> aux;
-    vector<pair<int, char>> v;
-    cin >> n;
-    for(i = 0; i< n ; i++){
-        cin >> aux.fst >> aux.snd;
-        mapa[aux.fst] = make_pair(0,0);
-        v.pb(aux);
-    } 
-    for(i = 0; i < n ; i++){
-        if(v[i].snd == 'D')
-            mapa[v[i].fst].snd++;
-        else
-            mapa[v[i].fst].fst++;
-    }
-    for(auto i = mapa.begin() ; i != mapa.end(); i++ ){
-        res += min((*i).snd.fst , (*i).snd.snd);
-    }
-    cout << res << endl;
+
+	desync;
+	int n, input;
+	cin >> n;
+	int count = 1;
+	int soma = 0;
+
+	while(n != 0){
+		for(int i = 0; i < n; i++){
+			cin >> input;
+			soma+= input;
+		}
+
+		cout << "Teste " << count << endl;
+		cout << soma << endl;
+		cout << endl;
+		soma = 0;
+		count++;
+		cin >> n;
+	}
+
 }

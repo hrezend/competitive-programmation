@@ -18,24 +18,18 @@
 using namespace std;
 
 int main(){
-    desync;
-    map<int, pair<int, int>> mapa;
-    pair<int, char> aux;
-    vector<pair<int, char>> v;
-    cin >> n;
-    for(i = 0; i< n ; i++){
-        cin >> aux.fst >> aux.snd;
-        mapa[aux.fst] = make_pair(0,0);
-        v.pb(aux);
-    } 
-    for(i = 0; i < n ; i++){
-        if(v[i].snd == 'D')
-            mapa[v[i].fst].snd++;
-        else
-            mapa[v[i].fst].fst++;
-    }
-    for(auto i = mapa.begin() ; i != mapa.end(); i++ ){
-        res += min((*i).snd.fst , (*i).snd.snd);
-    }
-    cout << res << endl;
+	desync;
+
+	int input_m, horas = 0, minutos = 0;
+	cin >> input_m;
+
+	if(input_m >= 60){
+		horas = input_m/60;
+		minutos = input_m % 60;
+	}
+	else{
+		minutos = input_m;
+	}
+	cout << horas << endl;
+	cout << minutos << endl;
 }

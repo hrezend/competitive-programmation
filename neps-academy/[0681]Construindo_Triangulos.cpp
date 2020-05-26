@@ -14,6 +14,7 @@ int main(){
 	long long int v[palitos];
 	long long int aux_i, aux_j, aux_k;
 	long long int area;
+	long long int semi_perimetro;
 	long long int maior = 0;
 
 	for(int i = 0; i < palitos; i++){
@@ -26,7 +27,8 @@ int main(){
 		for(int j = i+1; j < palitos-1; j++){
 			for(int k = j+1; k < palitos; k++){
 				if(v[i]+v[k] > v[j] || v[i]+v[j] > v[k] || v[j]+v[k] > v[i]){
-					area = v[i]*v[j]/v[k];
+					semi_perimetro = (v[i]+v[j]+v[k])/2;
+					area = sqrt(semi_perimetro * (semi_perimetro - v[i]) * (semi_perimetro - v[j]) * (semi_perimetor - v[k]));
 					if(area > maior){
 						aux_i = v[i];
 						aux_j = v[j];
