@@ -7,23 +7,32 @@
 #define all(x) (x.begin(), x.end())
 #define rall(x) (x.rbegin(), x.rend())
 #define mkp(x,y) (make_pair(x,y))
-#define imp(x) cout << x << endl
+#define out(x) cout << x << endl
 
 using namespace std;
 
 int main(){
-	desync;
-	int qtd_a = 0, qtd_b = 0, qtc_c = 0;
-	int qtd_pecas;
-	cin >> qtd_pecas;
-	int v[qtd_pecas];
+    desync;
+	int n = 4;
+	int v[n];
+	bool imp = false;
+	
+	for(int i = 0; i < n; i ++){
+		cin >> v[i];
+	}
 
+	sort(v, v+n);
 
+	for(int i = 0; i+2 < 4; i++){
+		if(v[i+2] < v[i]+v[i+1]){
+			imp = true;
+		}
+	}
 
-
-
-
-	cout << "A: " << qtd_a << endl;
-	cout << "B: " << qtd_b << endl;
-	cout << "C: " << qtd_c << endl;
+	if(imp){
+		cout << "S" << endl;
+	}
+	else{
+		cout << "N" << endl;
+	}
 }
