@@ -9,8 +9,8 @@ using namespace std;
 
 int main(){
 
-	desync;
-	set <int> group;
+    desync;
+    set <int> group;
     int n, input;
     cin >> n;
 

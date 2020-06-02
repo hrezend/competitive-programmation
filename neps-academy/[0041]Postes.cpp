@@ -12,4 +12,20 @@ using namespace std;
 
 int main(){
 	desync;
+	int sub = 0, ref = 0;
+	int n, input;
+
+	cin >> n;
+	
+	for(int i = 0; i < n; i++){
+		cin >> input;
+		if(input < 50){
+			sub++;
+		}
+		else if(input >= 50 && input < 85){
+			ref++;
+		}
+	}
+
+	cout << sub << " " << ref << endl;
 }

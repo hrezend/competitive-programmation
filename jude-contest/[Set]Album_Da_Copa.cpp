@@ -12,4 +12,17 @@ using namespace std;
 
 int main(){
 	desync;
+	set <int> fig;
+	int n, input;
+
+	cin >> n;
+
+	for(int i = 0; i < n; i++){
+		cin >> input;
+		fig.insert(input);
+	}
+
+	for(auto i = fig.begin() ; i != fig.end(); i++ ){
+        out(*i);
+    }
 }
