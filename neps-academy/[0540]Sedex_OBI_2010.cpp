@@ -12,35 +12,22 @@ using namespace std;
 
 int main(){
 	desync;
-	vector <int> moedas;
-	int troco, qtd_moedas, input;
-	int count = 0;
 	bool flag = true;
-	cin >> qtd_moedas >> troco;
+	int diametro, altura, largura, profundidade;
 
-	for(int i = 0; i < qtd_moedas; i++){
-		cin >> input;
-		moedas.pb(input);
-	}
+	cin >> diametro >> altura >> largura >> profundidade;
 
-	sort all(moedas);
-	out(troco);
-	for(int i = 0; i < moedas.size(); i++){
-		cout << "Moeda em i = " << i << " = " << moedas[i] << endl;
-	}
-
-	int resto = troco, aux = moedas.size();
-	while(aux != 0){
-		count += resto/moedas[aux-1];
-		resto = resto%moedas[aux-1];
-		aux--;
-	}
-
-	out(count);
-
-	if(count >= 10){
+	if(altura < diametro){
 		flag = false;
 	}
+	if(largura < diametro){
+		flag = false;
+	}
+	if(profundidade < diametro){
+		flag = false;
+	}
+	
+
 	if(flag){
 		out("S");
 	}
