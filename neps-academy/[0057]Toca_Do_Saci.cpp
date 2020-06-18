@@ -8,48 +8,49 @@
 #define rall(x) (x.rbegin(), x.rend())
 #define mkp(x,y) (make_pair(x,y))
 #define out(x) cout << x << endl
+#define max_tam 1001
 using namespace std; 
+
+int n, m;
+int toca[max_tam][max_tam];
+int dist[max_tam][max_tam];
+int q[] = {0, 0, 1, -1};
+int w[] = {1, -1, 0, 0};
+
+void dfs(int x, int y){
+    for (int z = 0; z < 4; z++){
+        int next_x = x + q[z];
+        int next_j = y + w[z];
+        if (next_x >= 0 && next_x < n && next_j >= 0 && next_j < m && dist[next_x][next_j] == -1 && toca[next_x][next_j] != 0){
+            dist[next_x][next_j] = dist[x][y] + 1;
+            dfs(next_x, next_j);
+        }
+    }
+}
 
 int main(){
 	desync;
-	int n, m, count_salas = 2;
-	int emi_n, emi_m;
-
+	int saida_n, saida_m, local_n, local_m;
 	cin >> n >> m;
-	int toca[n][m];
 
 	for(int i = 0; i < n; i++){
 		for(int j = 0; j < m; j++){
 			cin >> toca[i][j];
 			if(toca[i][j] == 3){
-				emi_n = i;
-				emi_m = j;
+				saida_n = i;
+				saida_m = j;
 			}
+			if(toca[i][j] == 2){
+				local_n = i;
+				local_m = j;
+			}
+			dist[i][j] = -1;
 		}
 	}
-
-	while(true){
-		count_salas++;
-		if(toca[emi_n-1][emi_m] == 1 && emi_n-1 >= 0){
-			toca[emi_n-1][emi_m] = 0;
-			emi_n--;
-		}
-		else if(toca[emi_n][emi_m-1] == 1 && emi_m-1 >= 0){
-			toca[emi_n][emi_m-1] = 0;
-			emi_m--;
-		}
-		else if(toca[emi_n+1][emi_m] == 1 && emi_n+1 < n){
-			toca[emi_n+1][emi_m] = 0;
-			emi_n++;
-		}
-		else if(toca[emi_n][emi_m+1] == 1 && emi_m+1 < m){
-			toca[emi_n][emi_m+1] = 0;
-			emi_m++;
-		}
-		if(toca[emi_n-1][emi_m] == 2 || toca[emi_n+1][emi_m] == 2 || toca[emi_n][emi_m-1] == 2 || toca[emi_n][emi_m+1] == 2){
-			break;
-		}
-	}
+	
+	dist[local_n][local_m] = 1;
+	dfs(local_n, local_m);
+	int count_salas = dist[saida_n][saida_m];
 
 	out(count_salas);
 }
