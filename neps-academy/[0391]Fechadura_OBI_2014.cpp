@@ -12,40 +12,22 @@ using namespace std;
 
 int main(){
 	desync;
-	vector <int> pinos;
-	int input, qtd_pinos, altura, count_move = 0;
-	cin >> qtd_pinos >> altura;
+	int pinos, altura, count_move = 0, diferenca = 0;
+	cin >> pinos >> altura;
+	int fechadura[pinos];
 
-	for(int i = 0; i < qtd_pinos; i++){
-		cin >> input;
-		pinos.pb(input);
+	for(int i = 0; i < pinos; i++){
+		cin >> fechadura[i];
+	}
+	for(int i = 0; i+1 < pinos; i++){
+		diferenca = altura - fechadura[i];
+		fechadura[i] += diferenca;
+		fechadura[i+1] += diferenca;
+		count_move += abs(diferenca);
 	}
 
-	for(int i = 0; i < qtd_pinos-1; i++){
-		if(pinos[i] == altura){
-			pinos.erase(pinos.begin()+i);
-			continue;
-		}
-		else if(pinos[i+1] == altura){
-			pinos.erase(pinos.begin()+i+1);
-			continue;
-		}
-		while(pinos[i] != altura){
-			if(pinos[i] > altura){
-				pinos[i]--;
-			}
-			else{
-				pinos[i]++;
-			}
-			if(pinos[i+1] > altura){
-				pinos[i+1]--;
-			}
-			else{
-				pinos[i+1]++;
-			}
-			count_move++;
-		}
+	if(fechadura[pinos-1] != altura){
+		count_move = -1;
 	}
-
 	out(count_move);
 }
